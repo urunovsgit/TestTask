@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TestTask.Database;
+using TestTask.DataAccess;
 using TestTask.Domain.Models;
 
 namespace TestTask.Domain.Services;
@@ -12,7 +12,7 @@ public class DeliveryOrderQuery
 
 public interface IDeliveryOrderService
 {
-    public Task<IEnumerable<DeliveryOrder>> GetOrders(DeliveryOrderQuery query);
+    Task<IEnumerable<DeliveryOrder>> GetOrders(DeliveryOrderQuery query);
 }
 
 public class DeliveryOrderService(AppDbContext dbContext) : IDeliveryOrderService

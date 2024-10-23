@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using TestTask.Database;
+using TestTask.DataAccess;
 using TestTask.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);

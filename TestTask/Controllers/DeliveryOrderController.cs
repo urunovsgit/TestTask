@@ -8,12 +8,12 @@ namespace TestTask.Controllers;
 [Route("delivery-order")]
 public class DeliveryOrderController(IDeliveryOrderService service, ILogger<DeliveryOrderController> logger) : ControllerBase
 {
-    [HttpGet]
+    [HttpGet("list")]
     public async Task<IEnumerable<DeliveryOrder>> Get(string cityDistrict, DateTime? firstDeliveryDateTime)
     {
         return await service.GetOrders(new DeliveryOrderQuery
         {
-            Regions = [cityDistrict],
+            Regions = string.IsNullOrWhiteSpace(cityDistrict) ? null : [cityDistrict],
             FirstOrderDate = firstDeliveryDateTime
         });
     }
