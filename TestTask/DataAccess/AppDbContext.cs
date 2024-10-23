@@ -7,4 +7,5 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     public DbSet<DeliveryOrder> DeliveryOrders { get; set; }
     public DbSet<FetchedDeliveryOrder> FetchedDeliveryOrders { get; set; }
+    public DbSet<LogRecord> LogRecords { get; set; }
 }

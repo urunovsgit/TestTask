@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TestTask.DataAccess;
 using TestTask.Domain.Services;
+using ILogger = TestTask.Domain.Services.ILogger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<ILogger, Logger>();
 builder.Services.AddScoped<IDeliveryOrderService, DeliveryOrderService>();
 
 var app = builder.Build();
