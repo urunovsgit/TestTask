@@ -9,12 +9,24 @@ namespace TestTask.Controllers;
 public class DeliveryOrderController(IDeliveryOrderService service, ILogger<DeliveryOrderController> logger) : ControllerBase
 {
     [HttpGet("list")]
-    public async Task<IEnumerable<DeliveryOrder>> Get(string cityDistrict, DateTime? firstDeliveryDateTime)
+    public async Task<IEnumerable<DeliveryOrder>> GetOrdersList()
     {
-        return await service.GetOrders(new DeliveryOrderQuery
+        return await service.GetOrdersList();
+    }
+
+    [HttpGet("filter")]
+    public async Task<IEnumerable<DeliveryOrder>> FetchOrders(string cityDistrict, DateTime firstDeliveryDateTime)
+    {
+        return await service.FetchOrders(new DeliveryOrderQuery
         {
-            Regions = string.IsNullOrWhiteSpace(cityDistrict) ? null : [cityDistrict],
+            Region = cityDistrict,
             FirstOrderDate = firstDeliveryDateTime
         });
+    }
+
+    [HttpGet("fetched")]
+    public async Task<IEnumerable<FetchedDeliveryOrder>> GetFetchedOrdersList()
+    {
+        return await service.GetFetchedOrdersList();
     }
 }

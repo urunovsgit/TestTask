@@ -2,7 +2,7 @@
 
 namespace TestTask.Domain.Models;
 
-public class DeliveryOrder : IDeliveryOrder
+public class FetchedDeliveryOrder : IDeliveryOrder
 {
     [Key]
     public int Id { get; set; }
@@ -13,4 +13,11 @@ public class DeliveryOrder : IDeliveryOrder
     public string CityRegion { get; set; }
 
     public DateTime DeliveryDate { get; set; }
+
+    [Required, StringLength(50)]
+    public string RegionQuery {  get; set; }
+
+    public DateTime FirstOrderDateQuery { get; set; }
+
+    public DateTime QueryDate { get; set;}
 }
